@@ -10,6 +10,7 @@ RUN apk update && \
     apk add --no-cache --update aria2 && \
     apk add git && \
     git clone https://github.com/ziahamza/webui-aria2 /aria2-webui && \
+    mv /aria2-webui/docs /aria2-webui && \
     rm /aria2-webui/.git* -rf && \
     apk del git && \
     apk add --update darkhttpd
