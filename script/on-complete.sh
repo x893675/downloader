@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DOWNLOAD=/data/downloading # no trailing slash!
-COMPLETE=/data/complete # no trailing slash!
+COMPLETE=/data/complete/ # no trailing slash!
 LOG=/data/mvcompleted.log
 SRC=$3
 
@@ -14,7 +14,7 @@ while true; do
   DIR=`dirname "$SRC"`
   if [ "$DIR" == "$DOWNLOAD" ]; then
     echo `date` "INFO " "$3" moved as "$SRC". >> "$LOG"
-    mv --backup=t "$SRC" "$COMPLETE" >> "$LOG" 2>&1
+    mv -n "$SRC" "$COMPLETE" >> "$LOG" 2>&1
     exit $?
   elif [ "$DIR" == "/" -o "$DIR" == "." ]; then
     echo `date` ERROR "$3" not under "$DOWNLOAD". >> "$LOG"
